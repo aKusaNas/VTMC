@@ -84,8 +84,8 @@ public class StreamPraktiniai {
 		
 		//names.spliterator(" ")[0];
 		
-		return names.stream().filter(s -> s.split(" ", 1)).collect(Collectors.toList());
-		
+		//return names.stream().filter(s -> s.split(" ", 1)).collect(Collectors.toList());
+		return null;
 		
 		
 	}
