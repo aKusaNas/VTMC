@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import org.w3c.dom.css.Counter;
+
 public class StreamPraktiniai {
 
 	public static List<Integer> returnSquareRoot(List<Integer> numbers) {
@@ -62,9 +64,7 @@ public class StreamPraktiniai {
 
 	public static List<String> getFirstNames(List<String> names) {
 
-		return names.stream().map(s -> s.substring(0, 5).trim()).collect(Collectors.toList());
-		// return names.stream().map(word -> word.split("
-		// ")).flatMap(Arrays::stream).collect(Collectors.toList());
+		return names.stream().map(s -> s.substring(0, s.indexOf(" "))).collect(Collectors.toList());
 
 	}
 
@@ -162,23 +162,34 @@ public class StreamPraktiniai {
 	// https://www.javacodegeeks.com/2015/11/java-8-streams-api-grouping-partitioning-stream.html
 
 	public static Map<Boolean, List<User>> partionUsersByGender(List<User> users) {
-		throw new UnsupportedOperationException("Not implemented");
+		
+		return users.stream().collect(Collectors.partitioningBy(User::isMale));
+		
+		
 	}
 
 	public static Map<Integer, List<User>> groupByAge(List<User> users) {
-		throw new UnsupportedOperationException("Not implemented");
+		
+		return users.stream().collect(Collectors.groupingBy(User::getAge));
+		
 	}
 
 	public static Map<Boolean, Map<Integer, List<User>>> groupByGenderAndAge(List<User> users) {
-		throw new UnsupportedOperationException("Not implemented");
+		
+		return users.stream().collect(Collectors.groupingBy(User::isMale, Collectors.groupingBy(User::getAge)));
+		
 	}
 
 	public static Map<Boolean, Long> countGender(List<User> users) {
-		throw new UnsupportedOperationException("Not implemented");
+		
+		return users.stream().collect(Collectors.groupingBy(User::isMale, Collectors.counting()));
+		
 	}
 
 	public static IntSummaryStatistics ageSummaryStatistics(List<User> users) {
-		throw new UnsupportedOperationException("Not implemented");
+		
+		return users.stream().collect(Collectors.summarizingInt(User::getAge));
+		
 	}
 
 }
