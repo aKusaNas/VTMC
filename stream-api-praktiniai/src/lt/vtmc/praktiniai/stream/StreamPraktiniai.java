@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.w3c.dom.css.Counter;
 
 public class StreamPraktiniai {
 
@@ -162,34 +161,33 @@ public class StreamPraktiniai {
 	// https://www.javacodegeeks.com/2015/11/java-8-streams-api-grouping-partitioning-stream.html
 
 	public static Map<Boolean, List<User>> partionUsersByGender(List<User> users) {
-		
+
 		return users.stream().collect(Collectors.partitioningBy(User::isMale));
-		
-		
+
 	}
 
 	public static Map<Integer, List<User>> groupByAge(List<User> users) {
-		
+
 		return users.stream().collect(Collectors.groupingBy(User::getAge));
-		
+
 	}
 
 	public static Map<Boolean, Map<Integer, List<User>>> groupByGenderAndAge(List<User> users) {
-		
+
 		return users.stream().collect(Collectors.groupingBy(User::isMale, Collectors.groupingBy(User::getAge)));
-		
+
 	}
 
 	public static Map<Boolean, Long> countGender(List<User> users) {
-		
+
 		return users.stream().collect(Collectors.groupingBy(User::isMale, Collectors.counting()));
-		
+
 	}
 
 	public static IntSummaryStatistics ageSummaryStatistics(List<User> users) {
-		
+
 		return users.stream().collect(Collectors.summarizingInt(User::getAge));
-		
+
 	}
 
 }
