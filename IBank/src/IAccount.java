@@ -5,7 +5,7 @@ import ibank.Account;
 public class IAccount implements Account {
 
 	private String holderName;
-	private String holderNumber = "LT1000";
+	private String holderNumber = "";
 	private static int i = 0;
 
 	private BigDecimal holderBalance;
@@ -15,7 +15,7 @@ public class IAccount implements Account {
 	public IAccount(String accountHolderName) {
 
 		this.holderName = accountHolderName;
-		this.holderNumber += i++;
+		this.holderNumber = "LT1000" + i++;
 		this.holderBalance = BigDecimal.ZERO;
 
 		this.credit = false;
@@ -25,7 +25,7 @@ public class IAccount implements Account {
 	public IAccount(String accountHolderName, BigDecimal creditLimit) {
 
 		this.holderName = accountHolderName;
-		this.holderNumber += i++;
+		this.holderNumber = "LT1000" + i++;
 		this.holderLimit = creditLimit;
 		this.holderBalance = BigDecimal.ZERO;
 
