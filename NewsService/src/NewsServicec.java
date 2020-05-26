@@ -14,10 +14,12 @@ public class NewsServicec implements NewsService {
     @Override
     public List<Article> getArticles() {
 
-	safeArticleList = safeArticleList.stream().filter(s -> !s.getHeading().toLowerCase().contains("rupūs miltai"))
+	safeArticleList = safeArticleList.stream()
+		.filter(s -> !s.getHeading().toLowerCase().contains("rupūs miltai"))
 		.filter(s -> !s.getHeading().toLowerCase().contains("velniai rautų"))
 		.filter(s -> !s.getHeading().toLowerCase().contains("velnias"))
-		.filter(s -> !s.getHeading().toLowerCase().contains("velniais")).distinct()
+		.filter(s -> !s.getHeading().toLowerCase().contains("velniais"))
+		.distinct()
 		.collect(Collectors.toList());
 
 	for (Article artic : safeArticleList) {
